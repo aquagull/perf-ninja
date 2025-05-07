@@ -64,7 +64,7 @@ def buildAndRunBench(iterNumber, variant, cmakeFlags):
     labAbsPath = labRootPath
     if not os.path.isabs(labAbsPath):
       labAbsPath = os.path.join(saveCWD, labRootPath)
-    callWrapper("cmake -B . -DCMAKE_BUILD_TYPE=Release " + cmakeFlags + " -S \"" + labAbsPath + "\"")
+    callWrapper("cmake -B . -DCMAKE_BUILD_TYPE=Release  -DCMAKE_C_FLAGS=\"-g\" -DCMAKE_CXX_FLAGS=\"-g\" " + cmakeFlags + " -S \"" + labAbsPath + "\"")
     callWrapper("cmake --build . --config Release --parallel 8")
     # this will save score in result.json file
     callWrapper("cmake --build . --config Release --target validateLab")

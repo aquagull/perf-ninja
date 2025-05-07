@@ -3,7 +3,8 @@
 #include "solution.hpp"
 #include <memory>
 
-static void bench1(benchmark::State &state) {
+static void bench1(benchmark::State &state)
+{
   // Init benchmark data
   auto hash_map = std::make_unique<hash_map_t>(HASH_MAP_SIZE);
   std::vector<int> lookups;
@@ -11,7 +12,8 @@ static void bench1(benchmark::State &state) {
   init(hash_map.get(), lookups);
 
   // Run the benchmark
-  for (auto _ : state) {
+  for (auto _ : state)
+  {
     auto output = solution(hash_map.get(), lookups);
     benchmark::DoNotOptimize(output);
   }
